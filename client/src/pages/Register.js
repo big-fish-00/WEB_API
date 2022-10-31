@@ -1,9 +1,12 @@
 import {useState} from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import './page.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
-  const navigate = useNavigate()
-
+  const navigate = useNavigate(); 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -25,30 +28,37 @@ function App() {
 
     const data = await response.json()
 
-    if (data.status === 'ok') {
-      navigate.push('/login')
+    //console.log(data);
+    
+    if(data.status != 'ok'){
+      toast.info(`Please login`);
+      window.location.href = "/";
     }
     
   }
 
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={registerUser}>
-        <input value={name} onChange={(e) => setName(e.target.value)}
-        type="text" placeholder="Name"/>
-        <br />
-        <input value={email} onChange={(e) => setEmail(e.target.value)}
-        type="email" placeholder="Email"/>
-        <br />
-        <input value={password} onChange={(e) => setPassword(e.target.value)}
-        type="password" placeholder="Password"/>
-        <br />
-        <input type="submit" value="Register"/>
-      </form>
+    <div className='container'>
+      <h1 className='h1'>Register</h1>
+      <img className='img' src={require('./di.gif')} alt='login' />
+      <div className='form'>
+        <form onSubmit={registerUser}>
+          <input className="input" value={name} onChange={(e) => setName(e.target.value)}
+          type="text" placeholder="Name"/>
+          <br />
+          <input className="input" value={email} onChange={(e) => setEmail(e.target.value)}
+          type="email" placeholder="Email"/>
+          <br />
+          <input className="input" value={password} onChange={(e) => setPassword(e.target.value)}
+          type="password" placeholder="Password"/>
+          <br />
+          <ToastContainer position="top-right" autoClose={20000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable
+           pauseOnHover theme="light" />
+          <input className='submitBtn' type="submit" value="Register"/>
+        </form>
+      </div>
     </div>
-          
 
   );
 }

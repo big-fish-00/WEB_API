@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 80px auto;
+    align-items: center;
+    box-shadow: 0 5px 6px 0 #000;
+    padding: 30px 10px;
+    border-radius: 6px;
+    width: 400px;
+    background: white;
+    font-family: Roboto Condensed;
+}
+
+.h1 {
+    color: Black;
+    margin: 25px auto;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.img {
+    width: 150px;
+    height: 150px;
+}
+
+.input {
+    margin: 5px;
+    padding: 10px;
+    font-size: 15px;
+    border: 2px solid black;
+    outline: none;
+    font-weight: bold;
+    width: 200px;
+    font-family: Roboto Condensed;
+}
+
+.submitBtn {
+    margin-top: 20px;
+    margin-left: 85px;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    outline: none;
+    font-weight: bold;
+    font-family: Roboto Condensed;
+    cursor: pointer;
+}

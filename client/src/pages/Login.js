@@ -1,4 +1,8 @@
 import {useState} from 'react';
+import './page.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [email, setEmail] = useState('')
@@ -23,26 +27,34 @@ function App() {
     if (data.user) {
       localStorage.setItem('token', data.user)
       alert('Login successful')
-      window.location.href = "/dashboard"
+      toast.success(`Login successful.`);
+      window.location.href = "/home"
     }
     else {
-      alert('Login failed, Invalid username or password')
+      toast.error(`Login failed, Invalid username or password`);
+      alert('Login failed, Invalid username or password');      
     }
   }
 
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={loginUser}>
-        <input value={email} onChange={(e) => setEmail(e.target.value)}
-        type="email" placeholder="Email"/>
-        <br />
-        <input value={password} onChange={(e) => setPassword(e.target.value)}
-        type="password" placeholder="Password"/>
-        <br />
-        <input type="submit" value="Login"/>
-      </form>
+    <div className='container'>
+      <h1 className='h1'>Login</h1>
+      <img className='img' src={require('./login.gif')} alt='login' />
+      <div className='form'>
+        <form onSubmit={loginUser}>
+          <input className="input" value={email} onChange={(e) => setEmail(e.target.value)}
+          type="email" placeholder="Email"/>
+          <br />
+          <input className="input" value={password} onChange={(e) => setPassword(e.target.value)}
+          type="password" placeholder="Password"/>
+          <br />
+          <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable
+           pauseOnHover theme="light" />
+          <input className="submitBtn" type="submit" value="Login"/>
+        </form>
+      </div>
+      
     </div>
           
 
