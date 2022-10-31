@@ -42,8 +42,6 @@ function App() {
       toast.success(`Successfully fetched weather for ${city}.`);
       lon = response.data.coord.lon;
       lat = response.data.coord.lat;
-      
-
 
       const query = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
       Axios.get(query).then((response) => {
