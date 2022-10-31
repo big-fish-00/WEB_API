@@ -69,6 +69,7 @@ export const WeatherInfoIcon = {
     Humidity: "icon/humidity.png",
     Wind: "icon/wind.png",
     Pressure: "icon/pressure.png",
+    Pollution: "icon/pollution.png"
 };
 
 export const WeatherIcons = { 
@@ -120,6 +121,7 @@ const WeatherInfoComponent = (props) => {
 
 const WeatherInformationComponent =(props) => {
     const {weather} = props;
+    const {location} = props;
     const isDay = weather?.weather[0].icon?.includes('d')
     const getTime = (timeStamp) => {
         return `${new Date(timeStamp * 1000).getHours()} : ${new Date(timeStamp * 10000).getMinutes()}`
@@ -139,6 +141,8 @@ const WeatherInformationComponent =(props) => {
             <WeatherInfoComponent name="Pressure" value={weather?.main?.pressure}/> 
             <WeatherInfoComponent name="Wind" value={weather?.wind?.speed}/>
             <WeatherInfoComponent name="Humidity" value={weather?.main?.humidity}/>
+            <WeatherInfoComponent name="Pollution" value={location} />
+            
         </WeatherInfoContainer>
     </>
     );

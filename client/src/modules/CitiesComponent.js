@@ -32,7 +32,7 @@ const SearchContainer = styled.form`
     & input {
         padding: 10px;
         font-size: 15px;
-        border: 1px solid black;
+        border: 2px solid black;
         outline: none;
         font-weight: bold;
         width: 142px;
@@ -42,7 +42,7 @@ const SearchContainer = styled.form`
     & button {
         padding: 10px;
         font-size: 15px;
-        border: 1px solid black;
+        border: 2px solid black;
         background-color: black;
         color: white;
         outline: none;
