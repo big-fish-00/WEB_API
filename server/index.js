@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const User = require('./models/user.model');
+const Weather = require('./models/weather');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs'); 
 
@@ -59,6 +60,47 @@ app.post('/api/login', async(req,res) => {
         return res.json({status: 'error', user:false})
     }
 })
+
+app.post('/api/home', async (req, res) => {
+    console.log(req.body.city)
+    try {
+        await Weather.create({
+          city: req.body.city,
+          email: req.body.email
+        })
+        res.json({json: 'ok'})
+        }
+    catch (err){
+        res.json({json: 'error', error: "The location didn't exist"})
+        
+    }
+    
+})
+
+app.post('/api/search', async(req, res) => {
+    const email = req.headers['x-access-email']
+    Weather.find({'email': email}).exec((err, cities) => {
+        if(err) return res.json({ status: 'error', error: 'Failed to get data'});
+        return res.json({ status: 'ok', cities })
+    })
+    
+})
+
+
+app.post('/api/delete', async(req, res) => {
+    console.log(req.body);
+    try {
+        const deleteWeather = await Weather.deleteOne({
+            city: req.body.city,
+            email: req.body.email
+          })
+          res.json({status:'ok'})
+        }
+    catch (err){
+          res.json({json: 'error', error: "Fail to delete"})
+          
+      }
+ })
 
 
 app.get('/api/quote', async(req,res) => {

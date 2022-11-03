@@ -26,13 +26,14 @@ function App() {
 
     if (data.user) {
       localStorage.setItem('token', data.user)
+      localStorage.setItem('email', email)
       alert('Login successful')
       toast.success(`Login successful.`);
       window.location.href = "/home"
     }
     else {
       toast.error(`Login failed, Invalid username or password`);
-      alert('Login failed, Invalid username or password');      
+      alert('Login failed, Invalid username or password')
     }
   }
 

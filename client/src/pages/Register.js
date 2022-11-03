@@ -30,9 +30,9 @@ function App() {
 
     //console.log(data);
     
-    if(data.status != 'ok'){
+    if(data.status === 'ok'){
       toast.info(`Please login`);
-      window.location.href = "/";
+      window.location.href ("/");
     }
     
   }

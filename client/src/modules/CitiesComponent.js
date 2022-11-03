@@ -54,7 +54,7 @@ const SearchContainer = styled.form`
 `
 
 const CitiesComponent =(props) => {
-    const {updateCity, fetchWeatherData} = props;    
+    const {updateCity, fetchWeatherData} = props; 
     
     return (
         

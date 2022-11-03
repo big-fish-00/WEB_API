@@ -20,7 +20,7 @@ const Navbar = () => {
           </NavLink>
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+          <NavBtnLink to='/search'>Search</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

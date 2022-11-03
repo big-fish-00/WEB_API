@@ -29,6 +29,8 @@ function App() {
   const [weather, updateWeather] = useState();
   const [pollution, updateAir] = useState();
 
+  let email = localStorage.getItem('email');
+
   const fetchWeatherData = async (e) => {
     
     const message = city + " :D";
@@ -67,6 +69,22 @@ function App() {
         }
       })
 
+      const responses = fetch('http://localhost:5000/api/home', {
+      method: 'POST',  
+      headers: {
+        'Content-Type': 'application/json',
+      }, 
+      body: JSON.stringify({
+        city,
+        email
+      }), 
+    })
+
+    const data = responses.json();
+    if(data.status === 'success') {
+      console.log(data)
+    }
+
     })
     .catch((error) => {
       if(error.response) {
@@ -76,6 +94,8 @@ function App() {
         console.log('Error', error.message)
       }
     })
+
+    
     
   };
   
