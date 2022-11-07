@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// styled is the css
+
 const WeatherIcon = styled.img`
     width: 100px;
     height: 100px;
@@ -53,6 +55,8 @@ const SearchContainer = styled.form`
 
 `
 
+
+
 const CitiesComponent =(props) => {
     const {updateCity, fetchWeatherData} = props; 
     
@@ -62,6 +66,7 @@ const CitiesComponent =(props) => {
         <WebLabel>React Weather App</WebLabel>
         <WeatherIcon src="/icon/weather.gif"/>
         <InputCity>Search City Weather</InputCity>
+        {/* fetch what user input */}
         <SearchContainer onSubmit={fetchWeatherData}>
             <input placeholder='Enter City' 
             onChange={(e) => updateCity(e.target.value)}/>

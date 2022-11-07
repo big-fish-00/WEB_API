@@ -98,13 +98,7 @@ const InfoIcon = styled.img`
     height: 36px;
 `;
 
-
-const WebLabel = styled.span`
-  color: Black;
-  margin: 25px auto;
-  font-size: 20px;
-  font-weight: bold;
-`;
+// weather info components is to determine how many column and how many info what to show
 
 const WeatherInfoComponent = (props) => {
     const {name,value} = props;
@@ -119,10 +113,12 @@ const WeatherInfoComponent = (props) => {
     )
 }
 
+// weather information components is to fetch the information from open weather api
 const WeatherInformationComponent =(props) => {
     const {weather} = props;
     const {location} = props;
     const isDay = weather?.weather[0].icon?.includes('d')
+    // change the time to readble 
     const getTime = (timeStamp) => {
         return `${new Date(timeStamp * 1000).getHours()} : ${new Date(timeStamp * 10000).getMinutes()}`
     }

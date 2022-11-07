@@ -54,6 +54,7 @@ export default function History() {
       if(data.status ==='ok'){
         console.log("data delete")
         toast.info("Delete the latest location")
+        window.location.href('/search')
       }
       else {
         console.log("data error")
@@ -97,7 +98,7 @@ export default function History() {
             </tr>
           </thead>
           <tbody>
-            {/* {
+            {
               cities.cities.map((element,id) => {
                 return(
                   <>
@@ -109,7 +110,7 @@ export default function History() {
                   </>
                 )
               })
-            } */}
+            }
             {/* <tr>
               <th scope="row">1</th>
               <td>{cities.cities[0].email}</td>
