@@ -12,6 +12,7 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 
+//connect with Mongoose server
 const db = "mongodb+srv://dayu:19800429025856yh@cluster0.br8hvxy.mongodb.net/Mern?retryWrites=true&w=majority"; 
 
 mongoose.connect(db).then(()=>{ 
@@ -21,9 +22,11 @@ mongoose.connect(db).then(()=>{
         console.log("Error Connecting to database");}) 
 
 app.post('/api/register', async(req,res) => {
+    //pass the body to json
     console.log(req.body)
     try {
         const newPassword = await bcrypt.hash( req.body.password, 15)
+        //control what go to database
         await User.create({
             name: req.body.name,
             email: req.body.email,
@@ -47,7 +50,10 @@ app.post('/api/login', async(req,res) => {
 
     const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
 
+    //create a special token and allow to determine whether user legit or not
+
     if (isPasswordValid) {
+        //playload for sign
         const token = jwt.sign({
             name: user.name,
             email: user.email,

@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const User = new mongoose.Schema(
     {
     name: { type: String, required: true },
+    // make email unique 
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     quote: { type: String },
     },
-    { collection: 'user-data' }// Can see at MongoDB   
+    { collection: 'user-data' }// Can see at MongoDB , name of collection  
 )
 
 

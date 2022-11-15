@@ -4,6 +4,7 @@ import './page.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//useState() is a Hook that allows you to have state variables in functional components
 
 function App() {
   const navigate = useNavigate(); 
@@ -13,9 +14,12 @@ function App() {
 
   async function registerUser(event){
     event.preventDefault()
+
+    //connet to backend (server side)
     
      const response = await fetch('http://localhost:5000/api/register', {
       method: 'POST',  
+      //tell backend which sending the content type (content type have a lot  like binary, url)
       headers: {
         'Content-Type': 'application/json',
       }, 
